@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>CVC</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <meta property="og:image" content="img/cats.png"> -->
+    <!-- <meta property="og:image:type" content="image/png"> -->
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cvlab-kaist.github.io/Zero-shot-CVC/">
+    <meta property="og:title" content="Cross-View Completion Models are Zero-shot Correspondence Estimators">
+    <meta property="og:description" content="">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/codemirror.min.js"></script>
+    <script src="js/clipboard.min.js"></script>
+    <script src="js/video_comparison.js"></script>
+    <script src="js/app.js"></script>
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GTM-5RMHX8KW"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'GTM-5RMHX8KW');
+</script>
+
+<!-- Image Comparison Slider -->
+<!-- https://github.com/sneas/img-comparison-slider -->
+<!-- <script defer src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css" /> -->
+
+<body>
+    <div style="margin-left:5%; margin-right:5%">
+    <div class="container" id="header" style="text-align: center; margin: auto;">
+        <div class="row" id="title-row" style="max-width: 100%; margin: 10 auto; display: inline-block">
+            <h1 class="col-md-12 text-center" style="margin-top: 70px;" id="title">
+                Cross-View Completion Models are <br> Zero-shot Correspondence Estimators
+                <!-- <small>
+                    Arxiv 2024
+                </small> -->
+            </h1>
+        </div>
+        <div class="row" id="author-row" style="margin:0 auto;">
+            <div class="col-md-12 text-center" style="display: table; margin:0 auto;">
+                <a style="text-decoration:none" href="https://hg010303.github.io">
+                    Honggyu&nbsp;An<sup>1,*</sup>
+                </a>
+                <span style="padding-left: 20px;"></span>
+                <a style="text-decoration:none" href="https://github.com/jinlovespho">
+                    Jinhyeon&nbsp;Kim<sup>2,*</sup>
+                </a>
+                <span style="padding-left: 20px;"></span>
+                <a style="text-decoration:none" href="https://github.com/seong0905">
+                    Seonghoon Park<sup>3</sup>
+                </a>
+                <span style="padding-left: 20px;"></span>
+                <a style="text-decoration:none" href="https://crepejung00.github.io/">
+                    Jaewoo&nbsp;Jung<sup>1</sup> 
+                </a>
+                <br>
+                <span style="padding-left: 20px;"></span>
+                <a style="text-decoration:none" href="https://onground-korea.github.io">
+                    Jisang&nbsp;Han<sup>1</sup>
+                </a>
+                <span style="padding-left: 20px;"></span>
+                <a style="text-decoration:none" href="https://sunghwanhong.github.io/">
+                    Sunghwan&nbsp;Hong<sup>2</sup>
+                </a>
+                <span style="padding-left: 20px;"></span>
+                <a style="text-decoration:none" href="https://cvlab.kaist.ac.kr/">
+                    Seungryong&nbsp;Kim<sup>1,&dagger;</sup>
+                </a>
+                <br>
+                <small>
+                    * &nbsp; Equal Contribution 
+                    <span style="padding-left: 20px;"></span>
+                    &dagger; &nbsp; Corresponding Author
+                </small>
+                <table class="author-table" id="author-table">
+                    <tr>
+                        <td>
+                            <br>
+                            <small><sup>1</sup> &nbsp; KAIST</small>
+                            
+                        </td>
+                        <td>
+                            <br>
+                            <small><sup>2</sup> &nbsp; Korea University</small>
+                        </td>
+                        <td>
+                            <br>
+                            <small><sup>3</sup> &nbsp; Samsung Electronics</small>
+                        </td>
+                    </tr>
+                    
+                </table>
+                
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('author-row').style.maxWidth = document.getElementById("-row").clientWidth + 'px';
+    </script>
+
+    <div class="container" id="main">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 text-center">
+                <ul class="nav nav-pills nav-justified">
+                    <li>
+                        <a href="">
+                            <img src="./img/paper_image.png" height="60px">
+                            <h4><strong>Paper</strong></h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" target="_blank">
+                            <img src="img/github.png" height="60px">
+                                <h4><strong>Code</strong></h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- <div class="container"> -->
+            <div class="row">
+                <div class="text-center">
+                    <img src="./img/teaser.png" width="100%">
+                </div>
+                <br>
+                <div style="text-align:justify">
+                    <strong>Attention visualization of the cross-attention maps trained with cross-view completion.</strong>
+                    Given a pair of images consisting of a target image (left) and a source image (right), we visualize the attended region in the source image corresponding to a <span style="color: blue;">query point</span> in the target image, where <span style="color: red;">the point with the highest attention value</span> is marked in red.
+                    Although cross-view completion is not trained with correspondence-supervision, its cross-attention already establishes precise correspondences, especially under the setting with the most extreme viewpoint change.
+                    <br>
+                    <br>
+
+                </div>
+            </div>
+        <!-- </div> -->
+
+        <div class="row">
+            <div class="text-center col-md-offset-0">
+            <h2>
+                Abstract
+            </h2>
+            </div>
+            <div style="text-align:justify;  margin-left:10%; margin-right:10%">
+                In this work, we analyze new aspects of cross-view completion learning, mainly through the analogy of cross-view completion and traditional self-supervised correspondence learning. Based on our analysis, we reveal that the cross-attention map of cross-view completion model best reflects this correspondence information compared to other correlations from the encoder or decoder features. We further verify the effectiveness of the cross-attention map by evaluating on both zero-shot and supervised dense geometric correspondence and multi-frame depth estimation.
+
+            </div>
+            <br><br>
+        </div>
+        
+        <div class="row">
+            <div class="text-center col-md-offset-0">
+            <h2>
+                Cross-view Completion and Correspondence
+            </h2>
+            </div>
+            <div class="text-center">
+                <img style="max-width: 100%;" src="img/fig3_projectpage.png" width="100%">
+            </div>
+            <div class="content has-text-justified">
+                <strong>Analogy of self-supervised matching and cross-view completion.</strong> 
+                The cost volume learned by (b) cross-view completion within the cross-attention layer of the decoder block closely resembles that of (a) traditional self-supervised matching methods.
+                Both cost volumes undergo similar computations to reconstruct the target image by learning to find the correct correspondences to minimize the matching costs between the target and source images.
+            </div>
+            <br>
+        </div>
+
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                <div class="text-center col-md-offset-0">
+                <h2 class="title is-3"> Zero-shot Correspondence Qualitative Results </h2>
+                </div>
+                <div class="text-center">
+                    <img style="max-width: 100%;" src="img/crossattn.png" width="100%">
+                </div>
+                <div class="content has-text-justified">
+                    <strong>Visualization of matching costs on Hpatches.</strong>  we visualize the similarity region of matching cost in the source image corresponding to a <span style="color: blue;">query point</span> in the target image, where <span style="color: red;">red marks</span> the point with the most corresponding value.
+                </div>
+                
+                <div class="text-center col-md-offset-0">
+                    <h2 class="title is-3"> Learning-based Correspondence Qualitative Results </h2>
+                    </div>
+                    <div class="text-center">
+                        <img style="max-width: 100%;" src="img/learning_based_comparison.png" width="100%">
+                    </div>
+                    <div class="content has-text-justified">
+                        <strong>Qualitative results on HPatches.</strong>  The source images are warped to the target images using predicted correspondences.
+                </div>
+
+                <div class="text-center col-md-offset-0">
+                    <h2 class="title is-3"> Learning-based Depth Estimation Qualitative Results </h2>
+                    </div>
+                    <div class="text-center">
+                        <img style="max-width: 100%;" src="img/kitti_qual.png" width="100%">
+                    </div>
+                    <div class="content has-text-justified">
+                        <strong>Qualitative results on the KITTI.</strong>  We compare our method with multi-view depth estimation models that leverage epipolar-based cost volumes
+                </div>
+                <div class="text-center col-md-offset-0">
+                    <h3 class="title is-3"> Zero-shot Correspondence Quantitative Results </h3>
+                    </div>
+                    <div class="text-center">
+                        <img style="max-width: 100%;" src="img/zero_shot_quan_hpatches.png" width="100%">
+                    </div>
+                    <div class="content has-text-justified">
+                        <strong>Zero-shot matching results on HPatches.</strong>  Zero-shot performance of pretrained models by evaluating their cost volumes on both HPatches-240 and HPatches-Original, which represent 240 &times; 240 and original resolutions, respectively.
+                    </div>
+                    
+                    <br>
+                    <div class="text-center">
+                        <img style="max-width: 80%;" src="img/zero_shot_quan_eth3d.png" width="100%">
+                    </div>
+                    <div class="content has-text-justified">
+                        <strong>Zero-shot matching results on ETH3D.</strong>  Zero-shot performance of pretrained models by evaluating their cost volumes at the original resolutions of ETH3D.
+                    </div>
+                    
+                    <div class="text-center col-md-offset-0">
+                        <h2 class="title is-3"> Learning-based Correspondence Quantitative Results </h2>
+                        </div>
+                        <div class="text-center">
+                            <img style="max-width: 100%;" src="img/learning_match_quan.png" width="100%">
+                        </div>
+                        <div class="content has-text-justified">
+                            <strong>Dense geomtric correspondence results on both Hpatches and ETH3D.</strong> A higher scene label or rate, such as V or 15, corresponds to more challenging settings with extreme geometric deformations.
+                    </div>
+    
+                    <div class="text-center col-md-offset-0">
+                        <h2 class="title is-3"> Learning-based Depth Estimation Quantitative Results </h2>
+                        </div>
+                        <div class="text-center">
+                            <img style="max-width: 100%;" src="img/depth_quan_kitti.png" width="100%">
+                        </div>
+                        <div class="content has-text-justified">
+                            <strong>Depth estimation results on the KITTI.</strong>  We compare our method with multi-view depth estimation models that leverage epipolar-based cost volumes.
+                    </div>
+            </div>
+        </div>
+        </div>
+                
+
+        
+
+        <div class="row">
+            <div class="col-md-offset-0">
+                <h3>
+                    Citation
+                </h3>
+                If you find our work useful in your research, please cite our work as: 
+                <div class="form-group col-md-10">
+                        <pre>
+                </div>
+            </div>
+        </div>
+
+            <div class="row">
+                <div class="col-md-offset-0">
+                    <h3>
+                        Acknowledgements
+                    </h3>
+                    <p class="text-justify">
+                        <!-- We would like to thank Lior Yariv and Kai Zhang for helping us evaluate their methods, and Ricardo Martin-Brualla for helpful comments on our text. DV is supported by the National Science Foundation under Cooperative Agreement PHY-2019786 (an NSF AI Institute, <a href="http://iaifi.org">http://iaifi.org</a>) -->
+                        <!-- <br> -->
+                        The website template was borrowed from <a href="http://mgharbi.com/">Michaël Gharbi</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
