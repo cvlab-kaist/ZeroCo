@@ -160,9 +160,10 @@
                 </div>
                 <br>
                 <div style="text-align:justify">
-                    <strong>Attention visualization of the cross-attention maps trained with cross-view completion.</strong>
-                    Given a pair of images consisting of a target image (left) and a source image (right), we visualize the attended region in the source image corresponding to a <span style="color: blue;">query point</span> in the target image, where <span style="color: red;">the point with the highest attention value</span> is marked in red.
-                    Although cross-view completion is not trained with correspondence-supervision, its cross-attention already establishes precise correspondences, especially under the setting with the most extreme viewpoint change.
+                    <strong>Cross-view completion models are zero-thot correspondence estimators:</strong>
+                    given a pair of images consisting of a target image (left) and a source image (right), we visualize the attended region in the source image corresponding to a query point marked in <span style="color: blue;">blue</span> in the target image. The point with the highest attention is marked in <span style="color: red;">red</span>.
+                    Although cross-view completion is not trained with correspondence-supervision, its <strong>cross-attention</strong> already establishes precise correspondences, especially under extreme viewpoint change.
+
                     <br>
                     <br>
 
@@ -177,7 +178,7 @@
             </h2>
             </div>
             <div style="text-align:justify;  margin-left:10%; margin-right:10%">
-                In this work, we analyze new aspects of cross-view completion learning, mainly through the analogy of cross-view completion and traditional self-supervised correspondence learning. Based on our analysis, we reveal that the cross-attention map of cross-view completion model best reflects this correspondence information compared to other correlations from the encoder or decoder features. We further verify the effectiveness of the cross-attention map by evaluating on both zero-shot and supervised dense geometric correspondence and multi-frame depth estimation.
+                In this work, we analyze new aspects of cross-view completion learning, mainly through the analogy of cross-view completion and traditional self-supervised correspondence learning. Based on our analysis, we reveal that the cross-attention map of cross-view completion model best reflects correspondence information compared to other correlations from the encoder or decoder features. We further verify the effectiveness of the cross-attention map by evaluating on both zero-shot matching and learning-based dense geometric correspondence and multi-frame depth estimation. 
 
             </div>
             <br><br>
@@ -193,8 +194,8 @@
                 <img style="max-width: 100%;" src="img/fig3_projectpage.png" width="100%">
             </div>
             <div class="content has-text-justified">
-                <strong>Analogy of self-supervised matching and cross-view completion.</strong> 
-                The cost volume learned by (b) cross-view completion within the cross-attention layer of the decoder block closely resembles that of (a) traditional self-supervised matching methods.
+                <strong>Analogy of cross-view completion learning and self-supervised matching learning.</strong> 
+                The cost volume learned by (b) the cross-attention layers within cross-view completion models closely resembles that of (a) traditional self-supervised matching learning methods.
                 Both cost volumes undergo similar computations to reconstruct the target image by learning to find the correct correspondences to minimize the matching costs between the target and source images.
             </div>
             <br>
@@ -210,9 +211,9 @@
                     <img style="max-width: 100%;" src="img/crossattn.png" width="100%">
                 </div>
                 <div class="content has-text-justified">
-                    <strong>Visualization of matching costs on Hpatches.</strong>  we visualize the similarity region of matching cost in the source image corresponding to a <span style="color: blue;">query point</span> in the target image, where <span style="color: red;">red marks</span> the point with the most corresponding value.
+                    <strong>Visualization of matching costs in previous zero-shot matching methods and cross-view completion models.</strong> Given a pair of images consisting of a target image (a) and a source image (b), we visualize the attended region in the source image corresponding to a query point marked in <span style="color: blue;">blue</span> in the target image. The point with the highest attention is marked in <span style="color: red;">red</span>.
                 </div>
-                
+                <br>
                 <div class="text-center col-md-offset-0">
                     <h2 class="title is-3"> Learning-based Correspondence Qualitative Results </h2>
                     </div>
@@ -222,21 +223,22 @@
                     <div class="content has-text-justified">
                         <strong>Qualitative results on HPatches.</strong>  The source images are warped to the target images using predicted correspondences.
                 </div>
-
+                <br>
                 <div class="text-center col-md-offset-0">
                     <h2 class="title is-3"> Learning-based Depth Estimation Qualitative Results </h2>
                     </div>
                     <div class="text-center">
-                        <img style="max-width: 100%;" src="img/kitti_qual.png" width="100%">
+                        <img style="max-width: 100%;" src="img/vis_depth_kitti.png" width="100%">
                     </div>
                     <div class="content has-text-justified">
-                        <strong>Qualitative results on the KITTI.</strong>  We compare our method with multi-view depth estimation models that leverage epipolar-based cost volumes
+                        <strong>Qualitative results on the KITTI.</strong>  We compare our method with multi-view depth estimation models that leverage epipolar-based cost volumes.
                 </div>
+                <br>
                 <div class="text-center col-md-offset-0">
-                    <h3 class="title is-3"> Zero-shot Correspondence Quantitative Results </h3>
+                    <h2 class="title is-3"> Zero-shot Correspondence Quantitative Results </h2>
                     </div>
                     <div class="text-center">
-                        <img style="max-width: 100%;" src="img/zero_shot_quan_hpatches.png" width="100%">
+                        <img style="max-width: 100%;" src="img/zero_shot_quan_hp_new.png" width="100%">
                     </div>
                     <div class="content has-text-justified">
                         <strong>Zero-shot matching results on HPatches.</strong>  Zero-shot performance of pretrained models by evaluating their cost volumes on both HPatches-240 and HPatches-Original, which represent 240 &times; 240 and original resolutions, respectively.
@@ -249,7 +251,7 @@
                     <div class="content has-text-justified">
                         <strong>Zero-shot matching results on ETH3D.</strong>  Zero-shot performance of pretrained models by evaluating their cost volumes at the original resolutions of ETH3D.
                     </div>
-                    
+                    <br>
                     <div class="text-center col-md-offset-0">
                         <h2 class="title is-3"> Learning-based Correspondence Quantitative Results </h2>
                         </div>
@@ -259,7 +261,7 @@
                         <div class="content has-text-justified">
                             <strong>Dense geomtric correspondence results on both Hpatches and ETH3D.</strong> A higher scene label or rate, such as V or 15, corresponds to more challenging settings with extreme geometric deformations.
                     </div>
-    
+                    <br>
                     <div class="text-center col-md-offset-0">
                         <h2 class="title is-3"> Learning-based Depth Estimation Quantitative Results </h2>
                         </div>
@@ -269,6 +271,7 @@
                         <div class="content has-text-justified">
                             <strong>Depth estimation results on the KITTI.</strong>  We compare our method with multi-view depth estimation models that leverage epipolar-based cost volumes.
                     </div>
+                    <br>
             </div>
         </div>
         </div>
