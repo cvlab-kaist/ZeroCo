@@ -16,7 +16,7 @@
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cvlab-kaist.github.io/Zero-shot-CVC/">
+    <meta property="og:url" content="https://cvlab-kaist.github.io/ZeroCo/">
     <meta property="og:title" content="Cross-View Completion Models are Zero-shot Correspondence Estimators">
     <meta property="og:description" content="">
 
@@ -108,9 +108,9 @@
                     <span style="padding-left: 20px;"></span>
                     &dagger; &nbsp; Corresponding Author
                 </small> <br>
-                <small><sup>1</sup> &nbsp; KAIST</small> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <small><sup>2</sup> &nbsp; Korea University</small> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <small><sup>3</sup> &nbsp; Samsung Electronics</small> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <small><sup>1</sup> &nbsp; KAIST</small> <span style="padding-left: 20px;"></span>
+                <small><sup>2</sup> &nbsp; Korea University</small> <span style="padding-left: 20px;"></span>
+                <small><sup>3</sup> &nbsp; Samsung Electronics</small> <span style="padding-left: 20px;"></span>
                     
                 
             </div>
@@ -131,7 +131,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="" target="_blank">
+                        <a href="https://github.com/cvlab-kaist/ZeroCo" target="_blank">
                             <img src="img/github.png" height="60px">
                                 <h4><strong>Code</strong></h4>
                         </a>
@@ -146,8 +146,8 @@
                 </div>
                 <br>
                 <div style="text-align:justify">
-                    <strong>Cross-view completion models are zero-shot correspondence estimators:</strong>
-                    given a pair of images consisting of a target image (left) and a source image (right), we visualize the attended region in the source image corresponding to a query point marked in <span style="color: blue;">blue</span> in the target image. The point with the highest attention is marked in <span style="color: red;">red</span>.
+                    <strong>Cross-view completion models are zero-shot correspondence estimators.</strong>
+                    Given a pair of images consisting of a target image (left) and a source image (right), we visualize the attended region in the source image corresponding to a query point marked in <span style="color: blue;">blue</span> in the target image. The point with the highest attention is marked in <span style="color: red;">red</span>.
                     Although cross-view completion is not trained with correspondence-supervision, its <strong>cross-attention</strong> already establishes precise correspondences, especially under extreme viewpoint change.
 
                     <br>
@@ -164,10 +164,29 @@
             </h2>
             </div>
             <div style="text-align:justify;  margin-left:10%; margin-right:10%">
-                In this work, we analyze new aspects of cross-view completion learning, mainly through the analogy of cross-view completion and traditional self-supervised correspondence learning. Based on our analysis, we reveal that the cross-attention map of cross-view completion model best reflects correspondence information compared to other correlations from the encoder or decoder features. We further verify the effectiveness of the cross-attention map by evaluating on both zero-shot matching and learning-based dense geometric correspondence and multi-frame depth estimation. 
+                In this work, we explore new perspectives on cross-view completion learning by drawing an analogy to self-supervised correspondence learning.
+                Through our analysis, we demonstrate that the cross-attention map within cross-view completion models captures correspondence information more effectively than other correlations derived from encoder or decoder features.
+                We verify the effectiveness of the cross-attention map by evaluating on both zero-shot matching and learning-based geometric matching and multi-frame depth estimation. 
 
             </div>
             <br><br>
+        </div>
+
+        <div class="row">
+            <div class="text-center col-md-offset-0">
+            <h2>
+                Cross-view Completion and Correspondence
+            </h2>
+            </div>
+            <div class="text-center">
+                <img style="max-width: 100%;" src="img/fig3_projectpage.png" width="100%">
+            </div>
+            <div class="content has-text-justified">
+                <strong>Analogy of cross-view completion learning and self-supervised matching learning.</strong> 
+                The cost volume learned by (b) the cross-attention layers within cross-view completion models closely resembles that of (a) traditional self-supervised matching methods.
+                Both cost volumes undergo similar computations to reconstruct the target image by learning to find the correct correspondences to minimize the matching costs between the target and source images.
+            </div>
+            <br>
         </div>
 
         <div class="row">
@@ -181,43 +200,32 @@
             </div>
             <div class="content has-text-justified">
                 <strong>Visualization of matching costs.</strong> 
-                We visualize matching costs for the (d) encoder, (e) decoder, and (f) cross-attention components using the method outlined in (a) cross-view completion models. The attended region in the source image (c) that corresponds to the query point marked in <span style="color: blue;">blue</span> in the target image (b), with the point having the highest attention value marked in <span style="color: red;">red</span>.
+                We visualize matching costs for the (d) encoder, (e) decoder, and (f) cross-attention components in cross-view completion models.
+                In the source image (c), the attended region corresponding to the query point marked in <span style="color: blue;">blue</span> in the target image (b) is highlighted, with the highest attention value marked in <span style="color: red;">red</span>.
+                The cross-attention map (f) shows the sharpest focus, while encoder and decoder correlations exhibit broader attention, showing that geometric cues are most effectively captured by the cross-attention map.
             </div>
             <br>
         </div>
         
-        <div class="row">
-            <div class="text-center col-md-offset-0">
-            <h2>
-                Cross-view Completion and Correspondence
-            </h2>
-            </div>
-            <div class="text-center">
-                <img style="max-width: 100%;" src="img/fig3_projectpage.png" width="100%">
-            </div>
-            <div class="content has-text-justified">
-                <strong>Analogy of cross-view completion learning and self-supervised matching learning.</strong> 
-                The cost volume learned by (b) the cross-attention layers within cross-view completion models closely resembles that of (a) traditional self-supervised matching learning methods.
-                Both cost volumes undergo similar computations to reconstruct the target image by learning to find the correct correspondences to minimize the matching costs between the target and source images.
-            </div>
-            <br>
-        </div>
+
 
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column is-four-fifths">
                 <div class="text-center col-md-offset-0">
-                <h2 class="title is-3"> Zero-shot Correspondence Qualitative Results </h2>
+                <h2 class="title is-3"> Zero-shot Matching Qualitative Results </h2>
                 </div>
                 <div class="text-center">
                     <img style="max-width: 100%;" src="img/crossattn.png" width="100%">
                 </div>
                 <div class="content has-text-justified">
-                    <strong>Visualization of matching costs in previous zero-shot matching methods and cross-view completion models.</strong> Given a pair of images consisting of a target image (a) and a source image (b), we visualize the attended region in the source image corresponding to a query point marked in <span style="color: blue;">blue</span> in the target image. The point with the highest attention is marked in <span style="color: red;">red</span>.
+                    <strong>Visualization of matching costs in previous zero-shot matching methods and cross-view completion models.</strong>  
+                    Given a pair of images consisting of a target image (a) and a source image (b), we visualize the attended region in the source image corresponding to a query point marked in <span style="color: blue;">blue</span> in the target image. 
+                    The point with the highest attention is marked in <span style="color: red;">red</span>.
                 </div>
                 <br>
                 <div class="text-center col-md-offset-0">
-                    <h2 class="title is-3"> Learning-based Correspondence Qualitative Results </h2>
+                    <h2 class="title is-3"> Learning-based Matching Qualitative Results </h2>
                     </div>
                     <div class="text-center">
                         <img style="max-width: 100%;" src="img/learning_based_comparison.png" width="100%">
@@ -237,13 +245,14 @@
                 </div>
                 <br>
                 <div class="text-center col-md-offset-0">
-                    <h2 class="title is-3"> Zero-shot Correspondence Quantitative Results </h2>
+                    <h2 class="title is-3"> Zero-shot Matching Quantitative Results </h2>
                     </div>
                     <div class="text-center">
                         <img style="max-width: 100%;" src="img/zero_shot_quan_hp_new.png" width="100%">
                     </div>
                     <div class="content has-text-justified">
-                        <strong>Zero-shot matching results on HPatches.</strong>  Zero-shot performance of pretrained models by evaluating their cost volumes on both HPatches-240 and HPatches-Original, which represent 240 &times; 240 and original resolutions, respectively.
+                        <strong>Zero-shot matching results on HPatches.</strong>  
+                        Zero-shot performance of pretrained models by evaluating their cost volumes on both HPatches-240 and HPatches-Original, which represent 240 &times; 240 and original resolutions, respectively.
                     </div>
                     
                     <br>
@@ -251,17 +260,19 @@
                         <img style="max-width: 80%;" src="img/zero_shot_quan_eth3d.png" width="100%">
                     </div>
                     <div class="content has-text-justified">
-                        <strong>Zero-shot matching results on ETH3D.</strong>  Zero-shot performance of pretrained models by evaluating their cost volumes at the original resolutions of ETH3D.
+                        <strong>Zero-shot matching results on ETH3D.</strong>  
+                        Zero-shot performance of pretrained models by evaluating their cost volumes at the original resolutions of ETH3D.
                     </div>
                     <br>
                     <div class="text-center col-md-offset-0">
-                        <h2 class="title is-3"> Learning-based Correspondence Quantitative Results </h2>
+                        <h2 class="title is-3"> Learning-based Matching Quantitative Results </h2>
                         </div>
                         <div class="text-center">
                             <img style="max-width: 100%;" src="img/learning_match_quan.png" width="100%">
                         </div>
                         <div class="content has-text-justified">
-                            <strong>Dense geomtric correspondence results on both Hpatches and ETH3D.</strong> A higher scene label or rate, such as V or 15, corresponds to more challenging settings with extreme geometric deformations.
+                            <strong>Learning-based matching results on both Hpatches and ETH3D.</strong> 
+                            A higher scene label or rate, such as V or 15, corresponds to more challenging settings with extreme geometric deformations.
                     </div>
                     <br>
                     <div class="text-center col-md-offset-0">
@@ -271,7 +282,8 @@
                             <img style="max-width: 100%;" src="img/depth_quan_kitti.png" width="100%">
                         </div>
                         <div class="content has-text-justified">
-                            <strong>Depth estimation results on the KITTI.</strong>  We compare our method with multi-view depth estimation models that leverage epipolar-based cost volumes.
+                            <strong>Depth estimation results on the KITTI.</strong>
+                            We compare our method with multi-view depth estimation models that leverage epipolar-based cost volumes.
                     </div>
                     <br>
             </div>
