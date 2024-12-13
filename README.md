@@ -7,7 +7,7 @@
 <sup>1</sup>KAIST&emsp;&emsp;&emsp;&emsp;<sup>2</sup>Korea University&emsp;&emsp;&emsp;&emsp;<sup>3</sup>Samgsung Electronics <br>
 *: Equal Contribution &emsp;&emsp;&emsp;&emsp; &dagger;: Corresponding Author
 
-<a href=""><img src="https://img.shields.io/badge/arXiv-ZeroCo-red"></a>
+<a href="https://arxiv.org/abs/2412.09072"><img src="https://img.shields.io/badge/arXiv-ZeroCo-red"></a>
 <a href="https://cvlab-kaist.github.io/ZeroCo/"><img src="https://img.shields.io/badge/Project%20Page-ZeroCo-brightgreen"></a>
 </div>
 
