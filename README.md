@@ -19,6 +19,12 @@ In the meantime, visit our [Project Page](https://cvlab-kaist.github.io/ZeroCo/)
 ## 📚 Citing this Work
 Please use the following bibtex to cite our work:
 ```
+@article{an2024cross,
+  title={Cross-View Completion Models are Zero-shot Correspondence Estimators},
+  author={An, Honggyu and Kim, Jinhyeon and Park, Seonghoon and Jung, Jaewoo and Han, Jisang and Hong, Sunghwan and Kim, Seungryong},
+  journal={arXiv preprint arXiv:2412.09072},
+  year={2024}
+}
 ```
 
 ## 🙏 Acknowledgement
