@@ -8,10 +8,8 @@
 **qsub_logs
 admin/local.py
 
-# JLP
 pretrained_weights/
 vis/
 **.jpg
-**.png
 wandb/
 ZOOM_IN/
