@@ -96,10 +96,10 @@ CUDA_VISIBLE_DEVICES=${CUDA} python -u eval_matching.py \
     --save_dir /path/to/save/images/for/visualisation/  
 ``` -->
 
-### Acknowledgements
+## 🙏 Acknowledgements
 This code is heavily based on [DenseMatching](https://github.com/PruneTruong/DenseMatching), We highly appreciate the authors for their great work.
 
-### Citation
+## 📚 Citation
 If you found this code useful, please consider citing our paper.
 
 ```
