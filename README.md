@@ -1,5 +1,6 @@
 <div align="center">
 <h1>Cross-View Completion Models are <br> Zero-shot Correspondence Estimators</h1>
+<h3>CVPR 2025</h3>
 
 [**Honggyu An**](https://hg010303.github.io)<sup>1\*</sup> · [**Jinhyeon Kim**](https://github.com/jinlovespho)<sup>2\*</sup> · [**Seonghoon Park**](https://github.com/seong0905)<sup>3</sup> · [**Jaewoo Jung**](https://crepejung00.github.io/)<sup>1</sup> <br>
 [**Jisang Han**](https://onground-korea.github.io)<sup>1</sup> . [**Sunghwan Hong**](https://sunghwanhong.github.io/)<sup>2</sup> . [**Seungryong Kim**](https://cvlab.korea.ac.kr)<sup>1&dagger;</sup>
@@ -81,7 +82,7 @@ Each evaluation script contains several key parameters that can be customized:
 
 ```bash
 # Example evaluation script
-CUDA=3  # Specify GPU device rank
+CUDA=0  # Specify GPU device rank
 CUDA_VISIBLE_DEVICES=${CUDA} python -u eval_matching.py \
     --seed 2024                     # Random Seed Selection
     --dataset hp                    # Dataset (hp: HPatches, hp-240: HPatches (240x240), eth3d: ETH3D)
