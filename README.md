@@ -9,7 +9,23 @@
 
 <a href="https://arxiv.org/abs/2412.09072"><img src="https://img.shields.io/badge/arXiv-ZeroCo-red"></a>
 <a href="https://cvlab-kaist.github.io/ZeroCo/"><img src="https://img.shields.io/badge/Project%20Page-ZeroCo-brightgreen"></a>
+
+<p float='center'> <img src="assets/teaser.png" width="80%" /> </p>
+
+<strong>ZeroCo</strong> is a zero-shot correspondence model that demonstrates the effectiveness of cross-attention maps, learned through cross-view completion training, in capturing correspondences.
 </div>
+
+## 🔍  Overview
+In this work, we explore a novel perspective on cross-view completion learning by drawing an analogy to self-supervised correspondence learning. Through our analysis, we show that cross-attention maps in cross-view completion models capture correspondences more effectively than correlations derived from encoder or decoder features.
+
+This repository introduces <strong>ZeroCo</strong>, a zero-shot correspondence model designed to demonstrate that cross-attention maps encode rich correspondences. Additionally, we provide <strong>ZeroCo-Flow</strong> and <strong>ZeroCo-Depth</strong>, which extend ZeroCo for learning-based matching and multi-frame depth estimation, respectively.
+
+## 🛠️ What we expetected
+
+- [x] Release Zeroco code   
+- [ ] Release Zeroco-flow and Zeroco-depth code
+- [ ] Release pretrained weights
+
 
 ## Prerequisites
 
@@ -60,7 +76,7 @@ bash scripts/run_hp240_crocov2_LargeBase.sh
 bash scripts/run_eth3d_crocov2_LargeBase.sh
 ```
 
-### Script Configuration Details
+<!-- ### Script Configuration Details
 Each evaluation script contains several key parameters that can be customized:
 
 ```bash
@@ -77,7 +93,7 @@ CUDA_VISIBLE_DEVICES=${CUDA} python -u eval_matching.py \
     --output_ca_map                 # Enable cross-attention map output
     --reciprocity                   # Enable reciprocal cross-attention map
     --save_dir /path/to/save/images/for/visualisation/  
-```
+``` -->
 
 ### Acknowledgements
 This code is heavily based on [DenseMatching](https://github.com/PruneTruong/DenseMatching), We highly appreciate the authors for their great work.
