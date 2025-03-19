@@ -66,7 +66,7 @@ Each evaluation script contains several key parameters that can be customized:
 
 ```bash
 # Example evaluation script
-CUDA=3  # Specify GPU device rank
+CUDA=0  # Specify GPU device rank
 CUDA_VISIBLE_DEVICES=${CUDA} python -u eval_matching.py \
     --seed 2024                     # Random Seed Selection
     --dataset hp                    # Dataset (hp: HPatches, hp-240: HPatches (240x240), eth3d: ETH3D)
