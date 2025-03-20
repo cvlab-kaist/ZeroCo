@@ -17,41 +17,58 @@
 </div>
 
 ## 🔍  Overview
-In this work, we explore a novel perspective on cross-view completion learning by drawing an analogy to self-supervised correspondence learning. Through our analysis, we show that cross-attention maps in cross-view completion models capture correspondences more effectively than correlations derived from encoder or decoder features.
+In this work, we explore a novel perspective on cross-view completion learning by drawing an analogy to self-supervised correspondence learning. Through our analysis, we show that cross-attention maps in cross-view completion capture correspondences more effectively than correlations derived from encoder or decoder features.
 
 This repository introduces <strong>ZeroCo</strong>, a zero-shot correspondence model designed to demonstrate that cross-attention maps encode rich correspondences. Additionally, we provide <strong>ZeroCo-Flow</strong> and <strong>ZeroCo-Depth</strong>, which extend ZeroCo for learning-based matching and multi-frame depth estimation, respectively.
 
-## 🛠️ What we expetected
+## 🛠️ What to expetect
 
 - [x] Release Zeroco code   
 - [ ] Release Zeroco-flow and Zeroco-depth code
 - [ ] Release pretrained weights
 
 
-## Prerequisites
+## Environment
 
-- Environment setup
+* Create and activate conda environment with python 3.10.
+
+
   ```bash
-  conda create -n CVC python=3.10.15
-  conda activate CVC
-  pip install -r requirements.txt
+  conda create -n ZeroCo python=3.10.15
+  conda activate ZeroCo
   ```
 
-- Dataset preparation
+* Our code is developed based on pytorch 2.1.2 and CUDA 12.1. Please refer to the [requirements.txt](./requirements.txt) file to install the necessary dependencies.
+
+  ```
+  pip install torch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 --index-url https://download.pytorch.org/whl/cu121
+  pip install -r requirements.txt
+  ```
+- Create admin/local by running the following command and update the paths to the dataset
+
+  ```
+  python -c "from admin.environment import create_default_local_file; create_default_local_file()"
+  ```
+
+## Evaluation Datasets
+- For the evaluation of the zero-shot correspondence task, we used the HPatches and ETH3D datasets.
+- You can proceed with the download and preprocessing using the following bash script.
+
   ```bash
   bash download_ETH3D.sh
   bash download_hpatches.sh
   ```
 
-- CVC model checkpoint preparation
-  - [CroCo](https://github.com/naver/croco)
-  - [DUSt3R](https://github.com/naver/dust3r)  
-  - [MASt3R](https://github.com/naver/mast3r)
+## Checkpoints
+- Since we evaluate using a pretrained model for Cross-view Completion, it is necessary to download the pretrained weights.
+- The models currently implemented in our code are as follows. Please visit each repository to obtain the pretrained weights and download them into the [./pretrained_weights](./pretrained_weights/) folder.
+  - [CroCo](https://github.com/naver/croco): Cross-view completion pretrained model (Our baseline).
+  - [DUSt3R](https://github.com/naver/dust3r): 3D pointmap regressor model based on CroCo.
+  - [MASt3R](https://github.com/naver/mast3r): Feature matching model based on CroCo and DUSt3R. 
 
-- Create admin/local by running the following command and update the paths to the dataset
-```
-python -c "from admin.environment import create_default_local_file; create_default_local_file()"
-```
+- Additionally, you can directly evaluate models with the same architecture as Dust3r, such as [Monst3r](https://github.com/Junyi42/monst3r).
+
+
 
 
 ## Zero-shot Evaluation
@@ -77,7 +94,8 @@ bash scripts/run_hp240_crocov2_LargeBase.sh
 bash scripts/run_eth3d_crocov2_LargeBase.sh
 ```
 
-<!-- ### Script Configuration Details
+<details>
+<summary> Script Configuration Details </summary>
 Each evaluation script contains several key parameters that can be customized:
 
 ```bash
@@ -94,7 +112,8 @@ CUDA_VISIBLE_DEVICES=${CUDA} python -u eval_matching.py \
     --output_ca_map                 # Enable cross-attention map output
     --reciprocity                   # Enable reciprocal cross-attention map
     --save_dir /path/to/save/images/for/visualisation/  
-``` -->
+```
+</details>
 
 ## 🙏 Acknowledgements
 This code is heavily based on [DenseMatching](https://github.com/PruneTruong/DenseMatching), We highly appreciate the authors for their great work.
