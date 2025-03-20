@@ -59,14 +59,14 @@ This repository introduces <strong>ZeroCo</strong>, a zero-shot correspondence m
   bash download_hpatches.sh
   ```
 
-## Checkpoints
+## Prepare Pretrained Weights
 - Since we evaluate using a pretrained model for Cross-view Completion, it is necessary to download the pretrained weights.
 - The models currently implemented in our code are as follows. Please visit each repository to obtain the pretrained weights and download them into the [./pretrained_weights](./pretrained_weights/) folder.
   - [CroCo](https://github.com/naver/croco): Cross-view completion pretrained model (Our baseline).
   - [DUSt3R](https://github.com/naver/dust3r): 3D pointmap regressor model based on CroCo.
   - [MASt3R](https://github.com/naver/mast3r): Feature matching model based on CroCo and DUSt3R. 
 
-- Additionally, you can directly evaluate models with the same architecture as Dust3r, such as [Monst3r](https://github.com/Junyi42/monst3r).
+- Additionally, you can directly evaluate models with the same architecture as DUSt3R, such as [MonST3R](https://github.com/Junyi42/monst3r).
 
 
 
