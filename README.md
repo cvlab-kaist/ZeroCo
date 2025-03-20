@@ -21,7 +21,7 @@ In this work, we explore a novel perspective on cross-view completion learning b
 
 This repository introduces <strong>ZeroCo</strong>, a zero-shot correspondence model designed to demonstrate that cross-attention maps encode rich correspondences. Additionally, we provide <strong>ZeroCo-Flow</strong> and <strong>ZeroCo-Depth</strong>, which extend ZeroCo for learning-based matching and multi-frame depth estimation, respectively.
 
-## 🛠️ What to expetect
+## 🛠️ What to expect
 
 - [x] Release Zeroco code   
 - [ ] Release Zeroco-flow and Zeroco-depth code
